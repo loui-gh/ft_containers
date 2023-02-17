@@ -1,7 +1,7 @@
 # ft_containers
 
 Task: Implement the vector and map containers using the structure of the respective STL containers as reference. As with all C++ 42 projects, only the C++98 standard may be used.
-NEXT UP: see if fill constructor works )
+NEXT UP: see if fill constructor works by modifying main.
 
 A container is a holder object that stores a collection of other objects (its elements). They are implemented as class templates.
 A 'class template' allows you to define a generic class that can work with different data types. 
