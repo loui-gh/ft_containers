@@ -1,0 +1,43 @@
+In C++, std::allocator is a standard library class template that provides a way to allocate, deallocate and construct objects dynamically in memory. It is used to manage the memory allocation and deallocation of objects in containers such as std::vector, std::list, std::map, and other standard containers.
+
+std::allocator is a generic class template that can allocate and deallocate memory for any type of object. It has a simple and efficient interface for allocating memory, and is designed to work with any type of memory model, including the heap and the stack.
+
+The std::allocator template is parameterized with a type T, representing the type of object that the allocator will be used for. It has two main member functions: allocate() and deallocate(). The allocate() function takes a number of elements to allocate and returns a pointer to the first element, while the deallocate() function takes a pointer to the first element and deallocates the memory.
+
+For example, to allocate memory for an array of 10 integers using std::allocator, you would write:
+
+c
+
+std::allocator<int> myAllocator;
+int* myArray = myAllocator.allocate(10);
+
+This allocates enough memory to store 10 integers, and returns a pointer to the first integer in the allocated block. When you're done using the allocated memory, you can free it with the deallocate() function:
+
+scss
+
+myAllocator.deallocate(myArray, 10);
+
+This deallocates the memory block that was previously allocated.
+
+The use of std::allocator is mostly hidden behind the standard container interfaces, and you don't usually need to create an allocator object explicitly. However, it can be useful to create custom allocators that override the default behavior of std::allocator.
+
+std::allocator vs. [new] and [delete] --from https://stackoverflow.com/questions/31358804/whats-the-advantage-of-using-stdallocator-instead-of-new-in-c/31358990#31358990
+
+Consider the following code:
+
+std::vector<X> v;
+v.reserve(4);        // (1)
+v.push_back( X{} );  // (2)
+v.push_back( X{} );  // (3)
+v.clear();           // (4)
+
+Here line (1) must allocate enough memory for four objects, but not construct them yet. Then lines (2) and (3) must construct objects into the allocated memory. Then line (4) must destroy those objects, but not deallocate the memory. Finally, in the vector's destructor, all the memory can be deallocated.
+
+(SOME!) MEMBER FUCTIONS OF std::allocator:
+    allocate: This member function is used to allocate memory for a specified number of objects of a given type. It takes a single argument, which is the number of objects to allocate memory for. It returns a pointer to the first byte of the allocated memory block. The type of the allocated memory block is determined by the template parameter of the std::allocator class.
+
+    deallocate: This member function is used to deallocate memory previously allocated using allocate. It takes two arguments: a pointer to the beginning of the memory block to deallocate, and the number of objects in the block. The number of objects is used to determine the size of the block.
+
+    construct: This member function is used to construct an object at a specified location in memory. It takes two arguments: a pointer to the location where the object should be constructed, and the arguments to pass to the object's constructor. The construct member function does not allocate memory; it assumes that the memory has already been allocated.
+
+    destroy: This member function is used to destroy an object at a specified location in memory. It takes a single argument, which is a pointer to the object to destroy. The destroy member function does not deallocate memory; it assumes that the memory will be deallocated separately.

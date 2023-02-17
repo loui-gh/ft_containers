@@ -1,5 +1,11 @@
 # ft_containers
+
 Task: Implement the vector and map containers using the structure of the respective STL containers as reference. As with all C++ 42 projects, only the C++98 standard may be used.
+NEXT UP: see if fill constructor works )
+
+A container is a holder object that stores a collection of other objects (its elements). They are implemented as class templates.
+A 'class template' allows you to define a generic class that can work with different data types. 
+A vector is a dynamic array, and it should be able to take all kinds of variables (string, int, long long, etc.)
 
 Vector::
 A vector is a dynamic array.
@@ -12,4 +18,6 @@ The functions included in C++98 can be deduced from cplusplus.com and cppreferen
 Tip from Ulli: just start with the constructor and destructor
 
 
-NEXT UP: What is a container? A vector? Build your containers constructors. Don't be afraid to use your favourited ref to check how it's supposed to look :)
+
+
+std::allocator

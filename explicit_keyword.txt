@@ -1,0 +1,24 @@
+In C++, the explicit keyword is used as a modifier for constructors to indicate that a constructor should not be used for implicit type conversions. When a constructor is marked as explicit, it can only be called with the constructor syntax, and cannot be used for implicit conversions.
+
+Here is an example to illustrate the use of the explicit keyword:
+
+cpp
+
+class Foo {
+public:
+    explicit Foo(int x) : value_(x) {}
+private:
+    int value_;
+};
+
+void func(Foo f) {
+    // do something
+}
+
+int main() {
+    Foo f1(10);     // okay, constructs Foo from int
+    Foo f2 = 20;    // error, explicit constructor not used
+    func(30);       // error, explicit constructor not used
+    func(Foo(30));  // okay, constructs Foo from int
+    return 0;
+}

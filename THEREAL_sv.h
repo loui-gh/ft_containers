@@ -397,7 +397,7 @@ _GLIBCXX_BEGIN_NAMESPACE_CONTAINER
       __glibcxx_class_requires2(_Tp, _Alloc_value_type, _SameTypeConcept)
 #endif
 
-#if __cplusplus >= 201103L
+#if __cplusplus >= 201103L //Year = 2011; Month = 03
       static_assert(is_same<typename remove_cv<_Tp>::type, _Tp>::value,
 	  "std::vector must have a non-const, non-volatile value_type");
 # if __cplusplus > 201703L || defined __STRICT_ANSI__
